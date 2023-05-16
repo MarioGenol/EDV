@@ -1,0 +1,37 @@
+@import "@angular/material/theming";
+
+@include mat-core();
+
+$green-palette: (
+  50: #dff5eb,
+  100: #b2e5ce,
+  200: #7dd4ae,
+  300: #31c48d,
+  400: #00b776,
+  500: #00aa60,
+  600: #009b55,
+  700: #008948,
+  800: #00783c,
+  900: #005827,
+
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
+
+$theme-primary: mat-palette($green-palette);
+$theme-accent: mat-palette($mat-pink);
+$theme-warn: mat-palette($mat-red);
+
+$theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+
+@include angular-material-theme($theme);
