@@ -1,22 +1,22 @@
 <mat-sidenav-container class="sidenav-container">
 	<mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
 		[mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-		<mat-toolbar>Facultades</mat-toolbar>
-		<mat-card >
+		<mat-toolbar>Buildings</mat-toolbar>
+		<mat-card class="clickable" *ngFor="let building of buildings" matRipple (click)="redirectTo(building.id)">
 			<mat-card-header>
-				<img mat-card-avatar src='../../assets/images/etsiit.png'>
-				<mat-card-title>ETSIIT</mat-card-title>
-				<mat-card-subtitle>Campus Aynadamar</mat-card-subtitle>
+				<img mat-card-avatar src="../../assets/images/buildings/{{building.id}}.png">
+				<mat-card-title>{{ building.name }}</mat-card-title>
+				<mat-card-subtitle>{{ building.campus }}</mat-card-subtitle>
 			</mat-card-header>
 		</mat-card>
 	</mat-sidenav>
 	<mat-sidenav-content>
 		<mat-toolbar color="primary">
-			<button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+			<button #drawerButton type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
 				*ngIf="isHandset$ | async">
 				<mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
 			</button>
-			<span>Visualización de Datos Energéticos</span>
+			<span class="clickable" routerLink="/">La Trobe EDV</span>
 		</mat-toolbar>
 		<router-outlet></router-outlet>
 	</mat-sidenav-content>

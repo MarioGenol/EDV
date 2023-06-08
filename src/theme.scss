@@ -29,7 +29,7 @@ $green-palette: (
 );
 
 $theme-primary: mat-palette($green-palette);
-$theme-accent: mat-palette($mat-pink);
+$theme-accent: mat-palette($green-palette);
 $theme-warn: mat-palette($mat-red);
 
 $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);

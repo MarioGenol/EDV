@@ -26,3 +26,12 @@ export async function getDataYear(id, year) {
 	const response = await pool.query(`SELECT * FROM consumption.consumption WHERE faculty = ${id} and year(date) = \'${year}\'`);
 	return response[0];
 }
+
+export async function getBuildings() {
+	const response = await pool.query(`SELECT * FROM consumption.buildings ORDER BY name`);
+	return response[0];
+}
+export async function getBuildingID(id) {
+	const response = await pool.query(`SELECT * FROM consumption.buildings WHERE id = ${id}`);
+	return response[0];
+}

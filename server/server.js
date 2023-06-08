@@ -1,5 +1,5 @@
 import express from 'express';
-import { getData, getDataDay, getDataID, getDataYear } from './database.js'
+import { getData, getDataDay, getDataID, getDataYear, getBuildings, getBuildingID } from './database.js'
 
 const app = express();
 
@@ -37,6 +37,17 @@ app.get('/data/:id/year/:year', async (req, res) => {
     const id = req.params.id;
     const year = req.params.year;
     const data = await getDataYear(id, year);
+    res.send(data);
+})
+
+app.get('/buildings', async (req, res) => {
+    const data = await getBuildings();
+    res.send(data);
+})
+
+app.get('/buildings/:id', async (req, res) => {
+    const id = req.params.id;
+    const data = await getBuildingID(id);
     res.send(data);
 })
 

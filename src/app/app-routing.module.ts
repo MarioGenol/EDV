@@ -12,7 +12,7 @@ const routes: Routes = [
         component: MapComponent,
       },
       {
-        path: 'graph',
+        path: 'chart/:buildingId',
         component: ChartComponent,
       }
     ],

@@ -16,6 +16,7 @@ import { ChartComponent } from './chart/chart.component';
 import {MatCardModule} from '@angular/material/card';
 import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
 import * as CanvasJSAngularStockChart from '../assets/canvasjs.stock.angular.component';
+import { MatRippleModule } from '@angular/material/core';
 
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 var CanvasJSStockChart = CanvasJSAngularStockChart.CanvasJSStockChart;
@@ -40,7 +41,8 @@ var CanvasJSStockChart = CanvasJSAngularStockChart.CanvasJSStockChart;
     MatIconModule,
     MatListModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
