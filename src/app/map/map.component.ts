@@ -48,7 +48,7 @@ export class MapComponent implements OnInit {
 			accessToken: environment.mapbox.publicToken,
 			container: 'map',
 			style: this.style,
-			zoom: 16,
+			zoom: 15,
 			center: [this.lng, this.lat],
 		});
 
