@@ -39,6 +39,44 @@ export class MapComponent implements OnInit {
 					}
 				});
 			}
+
+			this.map.on('load', () => {
+				this.map.addSource('places', {
+					type: 'geojson',
+					data: {
+						type: 'FeatureCollection',
+						features: this.features
+					},
+				});
+	
+				this.map.addLayer({
+					id: 'places',
+					source: 'places',
+					type: 'circle',
+					paint: {
+						'circle-color': '#4264fb',
+						'circle-radius': 8,
+						'circle-stroke-width': 2,
+						'circle-stroke-color': '#ffffff'
+					}
+				});
+	
+				this.map.on('click', 'places', (e: any) => {
+					new mapboxgl.Popup()
+						.setLngLat(e.lngLat)
+						.setHTML(e.features[0].properties.description)
+						.addTo(this.map);
+				});
+	
+				this.map.on('mouseenter', 'places', () => {
+					// Change the cursor style as a UI indicator.
+					this.map.getCanvas().style.cursor = 'pointer';
+				});
+	
+				this.map.on('mouseleave', 'places', () => {
+					this.map.getCanvas().style.cursor = '';
+				});
+			});
 		})
 	}
 
@@ -53,65 +91,5 @@ export class MapComponent implements OnInit {
 		});
 
 		this.loadMapData();
-
-		this.map.on('load', () => {
-			this.map.addSource('places', {
-				type: 'geojson',
-				data: {
-					type: 'FeatureCollection',
-					features: this.features
-				},
-			});
-			// Add a layer showing the places.
-			/*
-			this.map.addLayer({
-				id: 'places',
-				type: 'fill',
-				source: 'places',
-				paint: {
-					'fill-color': ['get', 'color'],
-					'fill-opacity': 0.7
-				},
-			});
-
-			this.map.addLayer({
-				id: 'outline',
-				type: 'line',
-				source: 'places',
-				paint: {
-					'line-color': '#000',
-					'line-width': 1
-				},
-			});
-			*/
-
-			this.map.addLayer({
-				id: 'places',
-				source: 'places',
-				type: 'circle',
-				paint: {
-					'circle-color': '#4264fb',
-					'circle-radius': 8,
-					'circle-stroke-width': 2,
-					'circle-stroke-color': '#ffffff'
-				}
-			});
-
-			this.map.on('click', 'places', (e: any) => {
-				new mapboxgl.Popup()
-					.setLngLat(e.lngLat)
-					.setHTML(e.features[0].properties.description)
-					.addTo(this.map);
-			});
-
-			this.map.on('mouseenter', 'places', () => {
-				// Change the cursor style as a UI indicator.
-				this.map.getCanvas().style.cursor = 'pointer';
-			});
-
-			this.map.on('mouseleave', 'places', () => {
-				this.map.getCanvas().style.cursor = '';
-			});
-		});
 	}
 }

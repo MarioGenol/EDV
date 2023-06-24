@@ -55,13 +55,13 @@ export class ChartComponent implements OnInit {
                     text: this.name,
                 },
                 subtitles: [{
-                    text: `Peak: ${Math.round((this.peak + Number.EPSILON) * 10000) / 10000} / Average Consumption: ${Math.round((this.average + Number.EPSILON) * 10000) / 10000}`
+                    text: `Peak: ${Math.round((this.peak + Number.EPSILON) * 10000) / 10000} kWh / Average Consumption: ${Math.round((this.average + Number.EPSILON) * 10000) / 10000} kWh`
                 }],
                 theme: 'light2',
                 animationEnabled: true,
                 toolTip: {
                     enabled: true,
-                    content: "{y} MW"
+                    content: "{y} kWh"
                 },
                 charts: [
                     {
